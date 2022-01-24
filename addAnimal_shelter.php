@@ -4,8 +4,8 @@ require 'connect.php';
 
 if(isset($_POST['submit'])){
   try{
-    $dsn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
-    $dsn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $animal_boarding_name = $_POST['animal_boarding_name'];
     $animal_boarding_contact_number = $_POST['animal_boarding_contact_number'];
@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
     }
     else
     {
-      $stmt = $dsn->prepare("INSERT INTO animal_shelter_tbl
+      $stmt = $dbh->prepare("INSERT INTO animal_shelter_tbl
       (
         animal_boarding_name,
         animal_boarding_contact_number,

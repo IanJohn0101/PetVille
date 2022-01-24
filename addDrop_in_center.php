@@ -4,8 +4,8 @@ require 'connect.php';
 
 if(isset($_POST['submit'])){
   try{
-    $dsn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
-    $dsn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $organization_name = $_POST['organization_name'];
     $details = $_POST['details'];
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
     }
     else
     {
-      $stmt = $dsn->prepare("INSERT INTO drop_in_center
+      $stmt = $dbh->prepare("INSERT INTO drop_in_center
       (
         organization_name,
         org_location,

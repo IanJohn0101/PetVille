@@ -63,6 +63,7 @@
               <li><a href="#">View Veterinarian</a></li>
               <li><a href="#">View Animal Shelters</a></li>
               <li><a href="#">View Drop in Centers</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>

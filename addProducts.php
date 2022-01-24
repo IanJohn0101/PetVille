@@ -34,23 +34,21 @@ if(isset($_POST['submit'])){
         product_category,
         product_brand,
         product_price,
-        product_quantity,
-        product_img 
+        product_quantity
       ) 
       VALUES(
         :product_name,
         :product_category,
         :product_brand,
         :product_price,
-        :product_quantity,
-        :product_img
+        :product_quantity
       )");
       $stmt->bindParam(':product_name', $product_name);
       $stmt->bindParam(':product_category', $product_category);
       $stmt->bindParam(':product_brand', $product_brand);
       $stmt->bindParam(':product_price', $product_price);
       $stmt->bindParam(':product_quantity', $product_quantity);
-      $stmt->bindParam(':product_img', $product_img);
+      
       
       if($stmt->execute())
       {

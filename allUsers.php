@@ -65,20 +65,23 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         <ul>
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">View Products</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
               <li><a href="#">View Grooming Center</a></li>
-              <li><a href="#">View Veterinarian</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
               <li><a href="#">View Animal Shelters</a></li>
               <li><a href="#">View Drop in Centers</a></li>
+              <li><a href='allUsers.php'>View All Users</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
+            
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
@@ -102,6 +105,7 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Photo</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact Number</th>
@@ -111,18 +115,24 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                             </tr>
                         </thead>
                         <tbody>
+                          <style>
+                            .img{
+                              border-radius: 50%;
+                            }
+                          </style>
 						<?php
 							if(!empty($result)) { 
 								foreach($result as $row) {
 							?>
 							<tr class="table-row">
 								<td><?php echo $row["user_id"]; ?></td>
+                <td><img src="<?php echo (!empty($row["user_profilephoto"]))? ' ' .$row["user_profilephoto"]: 'PetVille/assets/img/defaultuserimg.png'; ?>"class = "img-circle" height="50" width="50"></td>
 								<td><?php echo $row["user_username"]; ?></td>
 								<td><?php echo $row["user_email"]; ?></td>
 								<td><?php echo $row["user_contactnumber"]; ?></td>
 								<td><?php echo $row["user_password"]; ?></td>
-								<td><a class="ajax-action-links" href='updateUser.php?user_id=<?php echo htmlentities($result->user_id); name="user_id[]"?>'><i class="bi bi-pen-fill"></i></td>
-								<td><a class="ajax-action-links" href='edit.php?user_id=<?php echo $row['user_id']; ?>'><i class="bi bi-trash-fill"></i></td>
+								<td><a class="ajax-action-links" href='updateUser.php?user_id=<?php echo $row['user_id']; ?>'><button class="btn btn-primary mr-3" name = "edit" id= "edit">Update</button></td>
+								<td><a class="ajax-action-links" href='deleteUser2.php?user_id=<?php echo $row['user_id']; ?>'><button class="btn btn-danger" style="color:rgba(255, 255, 255, 255)">Delete</button></td>
 							</tr>
 							<?php
 								}
@@ -134,7 +144,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         </div>
     </div>
   </div>
-    <!-- Put the dashboard content here -->
+  
+  <!-- Put the dashboard content here -->
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -185,30 +196,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   <!-- Template Main JS File -->
   <script src="PetVille/assets/js/main.js"></script>
-
+  
 </body>
 
 </html>
 
-<!-- Update php -->
-<!-- <?php
-require_once("db.php");
-if(!empty($_POST["save_record"])) {
-	$pdo_statement=$pdo_conn->prepare("update posts set post_title='" . $_POST[ 'post_title' ] . "', description='" . $_POST[ 'description' ]. "', post_at='" . $_POST[ 'post_at' ]. "' where id=" . $_GET["id"]);
-	$result = $pdo_statement->execute();
-	if($result) {
-		header('location:index.php');
-	}
-}
-$pdo_statement = $pdo_conn->prepare("SELECT * FROM posts where id=" . $_GET["id"]);
-$pdo_statement->execute();
-$result = $pdo_statement->fetchAll();
-?> -->
-
-<!-- Delete php -->
-<!-- <?php
-require_once("db.php");
-$pdo_statement=$pdo_conn->prepare("delete from posts where id=" . $_GET['id']);
-$pdo_statement->execute();
-header('location:index.php');
-?> -->

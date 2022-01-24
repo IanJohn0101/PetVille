@@ -52,11 +52,13 @@
         <ul>
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">View Products</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
               <li><a href="#">View Grooming Center</a></li>
               <li><a href="#">View Veterinarian</a></li>
               <li><a href="#">View Animal Shelters</a></li>
               <li><a href="#">View Drop in Centers</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
+              
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
@@ -111,20 +113,43 @@
             cursor:pointer;
           }
         </style>
-        
+        <script>
+            function visiblePass() 
+            {
+                var x = document.getElementById("user_password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
         <div class="py-2">
           <div class="row py-2">
-              <div class="col-md-6"> <label for="animal_boarding_name">Username</label> <input type="text" name = "user_username" value="<?php echo htmlentities($result->user_username);?>" class="bg-light form-control" placeholder="Username"> </div>
-              <div class="col-md-6 pt-md-0 pt-3"> <label for="animal_boarding_contact_number">Email</label> <input type="text" name = "user_email" value="<?php echo htmlentities($result->user_email);?>" class="bg-light form-control" placeholder="Email"> </div>
+              <div class="col-md-6"> <label for="animal_boarding_name">Username</label> <input type="text" name = "user_username" value="<?= $result->user_username;?>" class="bg-light form-control" placeholder="Username"> </div>
+              <div class="col-md-6 pt-md-0 pt-3"> <label for="animal_boarding_contact_number">Email</label> <input type="text" name = "user_email" value="<?= $result->user_email;?>" class="bg-light form-control" placeholder="Email"> </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="animal_boarding_location">Contact Number</label> <input type="text" name = "user_contactnumber" value="<?php echo htmlentities($result->contactnumber);?>" class="bg-light form-control" placeholder="Contact Number"> </div>
-              <div class="col-md-6 pt-md-0 pt-3"> <label for="animal_boarding_email">Confirm Password</label> <input type="text" name = "user_password" value="<?php echo htmlentities($result->user_password);?>" class="bg-light form-control" placeholder="Confirm Password"> </div>
+              <div class="col-md-6"> 
+                  <label for="animal_boarding_location">Contact Number</label> <input type="text" name = "user_contactnumber" value="<?= $result->user_contactnumber;?>" class="bg-light form-control" placeholder="Contact Number"> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                <label for="animal_boarding_email">Confirm Password</label> <input type="password" name = "user_password" id="user_password" value="<?= $result->user_password;?>" class="bg-light form-control" placeholder="Confirm Password"><input type="checkbox" onclick="visiblePass()">Show Password
+              </div>
           </div>
-          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "update" id= "update">Save</button> <button class="btn border button">Cancel</button> </div>
+          <div class="row py-2">
+              <div class="col-md-6"> 
+                  <label for="animal_boarding_location">Update your profile photo</label> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                <input type="file" name = "user_profile_photo">
+              </div>
+          </div>
           
-            </form>
-        
+          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "update" id= "update">Save</button><button class="btn border button"><a href= "allUsers.php">Cancel</a></button> </div>
+          
+        </form>
+            
       </div>
   </div>
     </form>

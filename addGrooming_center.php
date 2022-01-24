@@ -8,9 +8,9 @@ if(isset($_POST['submit'])){
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $grooming_center = $_POST['grooming_center'];
-    $grooming_center_email = $_POST['grooming_center_email'];
     $grooming_center_contact_number = $_POST['grooming_center_contact_number'];
     $grooming_center_location = $_POST['grooming_center_location'];
+    $grooming_center_email = $_POST['grooming_center_email'];
     
     //$user_password = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12)); // para verify ra if pila ka characters ang dawaton
     $sql = "SELECT COUNT(grooming_center) AS num FROM groomingcentertbl WHERE grooming_center= :grooming_center";  // check if ni exist naba ang email nga gi provide
@@ -22,27 +22,28 @@ if(isset($_POST['submit'])){
 
     if($row['num'] > 0)
     {        
-      echo '<script>alert("Name of the Grooming Center already exists");</script>';
+      echo '<script>alert("Grooming Center already exists");</script>';
     }
     else
     {
       $stmt = $dbh->prepare("INSERT INTO groomingcentertbl
       (
         grooming_center,
-        grooming_center_email,
         grooming_center_contact_number,
-        grooming_center_location
+        grooming_center_location,
+        grooming_center_email
       ) 
       VALUES(
         :grooming_center,
-        :grooming_center_email,
         :grooming_center_contact_number,
         :grooming_center_location,
+        :grooming_center_email
       )");
       $stmt->bindParam(':grooming_center', $grooming_center);
-      $stmt->bindParam(':grooming_center_email', $grooming_center_email);
       $stmt->bindParam(':grooming_center_contact_number', $grooming_center_contact_number);
       $stmt->bindParam(':grooming_center_location', $grooming_center_location);
+      $stmt->bindParam(':grooming_center_email', $grooming_center_email);
+      
       
       if($stmt->execute())
       {

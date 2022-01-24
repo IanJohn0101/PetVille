@@ -1,4 +1,4 @@
-<?php require_once('addDrop_in_center.php') ?>
+<?php require_once('updateGroomingCenter2.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
   <!-- ======= Hero Section ======= -->
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -54,11 +53,12 @@
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="viewProducts.php">View Products</a></li>
-              <li><a href="#">View Grooming Center</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
               <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
               <li><a href="#">View Animal Shelters</a></li>
               <li><a href="#">View Drop in Centers</a></li>
-              <li><a href='allUsers.php'>View All Users</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
+              
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
@@ -84,10 +84,9 @@
   </header><!-- End Header -->
   <div class="main"> 
     <!-- Put the dashboard content here -->
-    <form method="POST" class="add-drop-in-center-form" id="add-drop-in-center-form">
-      <div class="wrapper bg-white mt-sm-5">
-      <h4 class="pb-4 border-bottom">Drop in Center</h4>
-        <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
+    <form method="POST" class="update-user-form" id="update-user-form">
+    <div class="wrapper bg-white mt-sm-5">
+      <h4 class="pb-4 border-bottom">Update Grooming Center</h4>
         <style>
           #img-section {
             display: inline-block;
@@ -114,25 +113,47 @@
             cursor:pointer;
           }
         </style>
-            <div class="pl-sm-4 pl-2" id="img-section"> <b>image of the Drop in Center</b>
-                <p>Accepted file type .png .jpg .jpeg Less than 1MB</p> 
-                <button class="btn button border"><b>Choose File</b></button>
-                <input type="file" name="animal_boarding_img" multiple>
-            </div>
-        </div>
+        <script>
+            function visiblePass() 
+            {
+                var x = document.getElementById("user_password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
         <div class="py-2">
           <div class="row py-2">
-              <div class="col-md-6"> <label for="organization_name">Organization Name</label> <input type="text" name = "organization_name" class="bg-light form-control" placeholder="Organization Name"> </div>
-              <div class="col-md-6 pt-md-0 pt-3"> <label for="location">Location</label> <input type="text" name = "location" class="bg-light form-control" placeholder="Location"> </div>
+              <div class="col-md-6"> 
+                  <label for="grooming_center">Grooming Center</label> <input type="text" name = "grooming_center" value="<?= $result->grooming_center;?>" class="bg-light form-control" placeholder="Username"> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                  <label for="grooming_center_email">Email</label> <input type="text" name = "grooming_center_email" value="<?= $result->grooming_center_email;?>" class="bg-light form-control" placeholder="Email"> 
+              </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="details">Details</label> <input type="text" name = "details" class="bg-light form-control" placeholder="Details"> </div>
-    
+              <div class="col-md-6"> 
+                  <label for="grooming_center_contact_number">Contact Number</label> <input type="text" name = "grooming_center_contact_number" value="<?= $result->grooming_center_contact_number;?>" class="bg-light form-control" placeholder="Contact Number"> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                <label for="grooming_center_location">Location</label> <input type="text" name = "grooming_center_location" value="<?= $result->grooming_center_location;?>" class="bg-light form-control" placeholder="Location">
+              </div>
           </div>
-         
-          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "submit" id= "submit">Submit</button> <button class="btn border button">Cancel</button> </div>
+          <div class="row py-2">
+              <div class="col-md-6"> 
+                  <label for="grooming_center_img">Update the image of the Grooming Center</label> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                <input type="file" name = "grooming_center_img">
+              </div>
+          </div>
           
-            </form>
+          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "update" id= "update">Save</button><button class="btn border button"><a href= "allUsers.php">Cancel</a></button> </div>
+          
+        </form>
+            
       </div>
   </div>
     </form>

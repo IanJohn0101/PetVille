@@ -1,7 +1,13 @@
 <?php
-define('BASEPATH', true);
-require 'connect.php';
+$db_server = "localhost";
+$db_username = "root";
+$db_password = "";
+$db_database = "petsociety";
+ 
+$conn = new PDO("mysql:host=$db_server;dbname=$db_database", $db_username, $db_password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +44,11 @@ require 'connect.php';
 </head>
 
 <body>
+<?php	
+	$pdo_statement = $conn->prepare("SELECT * FROM products ORDER BY id DESC");
+	$pdo_statement->execute();
+	$result = $pdo_statement->fetchAll();
+?>
   <!-- ======= Hero Section ======= -->
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -54,20 +65,23 @@ require 'connect.php';
         <ul>
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">View Products</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
               <li><a href="#">View Grooming Center</a></li>
-              <li><a href="#">View Veterinarian</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
               <li><a href="#">View Animal Shelters</a></li>
               <li><a href="#">View Drop in Centers</a></li>
+              <li><a href='allUsers.php'>View All Users</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
+            
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
@@ -91,112 +105,49 @@ require 'connect.php';
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Salary</th>
-                                <th>Country</th>
-                                <th>City</th>
+                                <th>Photo</th>
+                                <th>Product Name</th>
+                                <th>Product Brand</th>
+                                <th>Product Category</th>
+                                <th>Product Price</th>
+                                <th>Product Quantity</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Dakota Rice</td>
-                                <td>$36,738</td>
-                                <td>United States</td>
-                                <td>Oud-Turnhout</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Minerva Hooper</td>
-                                <td>$23,789</td>
-                                <td>Curaçao</td>
-                                <td>Sinaai-Waas</td>>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Sage Rodriguez</td>
-                                <td>$56,142</td>
-                                <td>Netherlands</td>
-                                <td>Baileux</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Philip Chaney</td>
-                                <td>$38,735</td>
-                                <td>Korea, South</td>
-                                <td>Overland Park</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Doris Greene</td>
-                                <td>$63,542</td>
-                                <td>Malawi</td>
-                                <td>Feldkirchen in Kärnten</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Mason Porter</td>
-                                <td>$78,615</td>
-                                <td>Chile</td>
-                                <td>Gloucester</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Allisa Sanches</td>
-                                <td>$28,615</td>
-                                <td>Columbia</td>
-                                <td>Nigger</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Peter Benhams</td>
-                                <td>$33,215</td>
-                                <td>Ecuador</td>
-                                <td>Holster</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Bramson Adams</td>
-                                <td>$109,222</td>
-                                <td>Philippines</td>
-                                <td>Camp John</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Jessie Williams</td>
-                                <td>$55,123</td>
-                                <td>Malaysia</td>
-                                <td>Glosterine</td>
-                                <td><i class ="fa fa-pencil"></i></td>
-                                <td><i class ="fa fa-trash"></i></td>
-                            </tr>
+                          <style>
+                            .img{
+                              border-radius: 50%;
+                            }
+                          </style>
+						<?php
+							if(!empty($result)) { 
+								foreach($result as $row) {
+							?>
+							<tr class="table-row">
+								<td><?php echo $row["id"]; ?></td>
+                <td><img src="<?php echo (!empty($row["product_img"]))? ' ' .$row["product_img"]: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td>
+								<td><?php echo $row["product_name"]; ?></td>
+                <td><?php echo $row["product_brand"]; ?></td>
+								<td><?php echo $row["product_category"]; ?></td>
+                <td><?php echo $row["product_price"]; ?></td>
+								<td><?php echo $row["product_quantity"]; ?></td>
+								<td><a class="ajax-action-links" href='updateProduct.php?id=<?php echo $row['id']; ?>'><button class="btn btn-primary mr-3" name = "edit" id= "edit">Update</button></td>
+								<td><a class="ajax-action-links" href='deleteProduct.php?id=<?php echo $row['id']; ?>'><button class="btn btn-danger" style="color:rgba(255, 255, 255, 255)">Delete</button></td>
+							</tr>
+							<?php
+								}
+							}
+							?>
                         </tbody>
                     </table>
             </div>
         </div>
     </div>
   </div>
-    <!-- Put the dashboard content here -->
+  
+  <!-- Put the dashboard content here -->
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -247,7 +198,8 @@ require 'connect.php';
 
   <!-- Template Main JS File -->
   <script src="PetVille/assets/js/main.js"></script>
-
+  
 </body>
 
 </html>
+

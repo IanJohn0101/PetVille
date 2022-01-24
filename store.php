@@ -53,11 +53,12 @@
         <ul>
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">View Products</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
               <li><a href="#">View Grooming Center</a></li>
-              <li><a href="#">View Veterinarian</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
               <li><a href="#">View Animal Shelters</a></li>
               <li><a href="#">View Drop in Centers</a></li>
+              <li><a href='allUsers.php'>View All Users</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
@@ -121,15 +122,15 @@
         </div>
         <div class="py-2">
           <div class="row py-2">
-              <div class="col-md-6"> <label for="product_name">Product Name</label> <input type="text" name = "organization_name" class="bg-light form-control" placeholder="Organization Name"> </div>
-              <div class="col-md-6 pt-md-0 pt-3"> <label for="product_name">Product Brand</label> <input type="text" name = "location" class="bg-light form-control" placeholder="Brand"> </div>
+              <div class="col-md-6"> <label for="product_name">Product Name</label> <input type="text" name = "product_name" class="bg-light form-control" placeholder="Product Name"> </div>
+              <div class="col-md-6 pt-md-0 pt-3"> <label for="product_brand">Product Brand</label> <input type="text" name = "product_brand" class="bg-light form-control" placeholder="Brand"> </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="details">Product Category</label> <input type="text" name = "details" class="bg-light form-control" placeholder="Category"> </div>
-              <div class="col-md-6"> <label for="details">Product Price</label> <input type="text" name = "details" class="bg-light form-control" placeholder="Price"> </div>
+              <div class="col-md-6"> <label for="product_category">Product Category</label> <input type="text" name = "product_category" class="bg-light form-control" placeholder="Category"> </div>
+              <div class="col-md-6"> <label for="product_price">Product Price</label> <input type="text" name = "product_price" class="bg-light form-control" placeholder="Price"> </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="details">Product Quantity</label> <input type="text" name = "details" class="bg-light form-control" placeholder="Details"> </div>
+              <div class="col-md-6"> <label for="product_quantity">Product Quantity</label> <input type="text" name = "product_quantity" class="bg-light form-control" placeholder="Details"> </div>
               
           </div>
           <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "submit" id= "submit">Submit</button> <button class="btn border button">Cancel</button> </div>

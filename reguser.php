@@ -25,9 +25,16 @@ if(isset($_POST['submit'])){
     }
     else
     {
-      $stmt = $dsn->prepare("INSERT INTO users_table (user_username, user_email, user_password) 
+      $stmt = $dsn->prepare("INSERT INTO users_table 
+      (
+        user_username, 
+        user_email, 
+        user_password
+      ) 
       VALUES(
-          :user_username, :user_email, :user_password
+          :user_username, 
+          :user_email, 
+          :user_password
       )");
       $stmt->bindParam(':user_username', $user_username);
       $stmt->bindParam(':user_email', $user_email);

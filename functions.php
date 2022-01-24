@@ -1,5 +1,12 @@
-<?php include_once("includes/config.php"); ?>
-
+<<?php
+    $db_server = "localhost";
+    $db_username = "root";
+    $db_password = "";
+    $db_database = "petsociety";
+ 
+    $conn = new PDO("mysql:host=$db_server;dbname=$db_database", $db_username, $db_password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+?>
 <?php
 
 class func 
@@ -123,6 +130,23 @@ class func
         } catch (PDOException $exception) {
             // If there is an error with the connection, stop the script and display the error.
             exit('Failed to connect to database!');
+        }
+    }
+    
+    public function delete_user($user_id)
+    {
+        try
+        {
+            $sql = "delete from users_table where user_id = :user_id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam('user_id', $user_id);
+            $stmt->execute();
+            return true;    
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+            return false;
         }
     }
     

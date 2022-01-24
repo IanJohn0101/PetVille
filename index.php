@@ -49,9 +49,15 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-
+          <li><a class="nav-link scrollto" href="#about">Pet Store</a></li>
+          <li class="dropdeown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="">Grooming Center</a></li>
+              <li><a href="">Veterinarian</a></li>
+              <li><a href="">Animal Boarding</a></li>
+              <li><a href="">Pet Training</a></li>
+              <li><a href="">Dog/Cat Breeding</a></li>
+            </ul>
           <li><a class="nav-link scrollto " href="#Announcement">Announcement</a></li>
           
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>

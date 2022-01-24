@@ -1,52 +1,26 @@
 <?php
-session_start();
-require_once('connect.php');
+    $db_server = "localhost";
+    $db_username = "root";
+    $db_password = "";
+    $db_database = "petsociety";
  
-if(isset($_POST['submit']))
-{
-	if(isset($_POST['admin_email'],$_POST['admin_password']) && !empty($_POST['admin_email']) && !empty($_POST['admin_password']))
-	{
-		$admin_email = trim($_POST['admin_email']);
-		$admin_password = trim($_POST['admin_password']);
- 
-		if(filter_var($admin_email, FILTER_VALIDATE_EMAIL))
-		{
-			$sql = "select * from members where admin_email = :admin_email";
-			$handle = $pdo->prepare($sql);
-			$params = ['admin_email'=>$email];
-			$handle->execute($params);
-			if($handle->rowCount() > 0)
-			{
-				$getRow = $handle->fetch(PDO::FETCH_ASSOC);
-				if(password_verify($admin_password, $getRow['admin_password']))
-				{
-					unset($getRow['admin_password']);
-					$_SESSION = $getRow;
-					header('location:adminHome.php');
-					exit();
-				}
-				else
-				{
-					$errors[] = "Wrong Email or Password";
-				}
-			}
-			else
-			{
-				$errors[] = "Wrong Email or Password";
-			}
-			
-		}
-		else
-		{
-			$errors[] = "Email address is not valid";	
-		}
- 
-	}
-	else
-	{
-		$errors[] = "Email and Password are required";	
-	}
- 
-}
+    $conn = new PDO("mysql:host=$db_server;dbname=$db_database", $db_username, $db_password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	if(ISSET($_POST['submit'])){
+        if($_POST['admin_email'] != "" || $_POST['admin_password'] != ""){
+            $admin_email = $_POST['admin_email'];
+            $admin_password = $_POST['admin_password'];
+            $sql = "SELECT * FROM `admintbl` WHERE `admin_email`=? AND `admin_password`=? ";
+            $query = $conn->prepare($sql);
+            $query->execute(array($admin_email,$admin_password));
+            $row = $query->rowCount();
+            $fetch = $query->fetch();
+            if($row > 0) {
+				header('location:adminHome.php');
+            } else{
+                echo"<center><h5 class='text-danger'>Invalid username or password</h5></center>";
+            }
+        }
+    }
 ?>
- 

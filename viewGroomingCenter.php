@@ -1,4 +1,12 @@
-<?php include('loginadmin.php') ?>
+<?php
+$db_server = "localhost";
+$db_username = "root";
+$db_password = "";
+$db_database = "petsociety";
+ 
+$conn = new PDO("mysql:host=$db_server;dbname=$db_database", $db_username, $db_password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +38,17 @@
 
   <!-- Template Main CSS File -->
   <link href="PetVille/assets/css/style.css" rel="stylesheet">
-  <link href="PetVille/assets/css/login.css" rel="stylesheet">
+  <link href="PetVille/assets/css/myprofile.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-
+<?php	
+	$pdo_statement = $conn->prepare("SELECT * FROM groomingcentertbl ORDER BY id DESC");
+	$pdo_statement->execute();
+	$result = $pdo_statement->fetchAll();
+?>
   <!-- ======= Hero Section ======= -->
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -51,18 +63,32 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <script>
-            $('#about').click(function(){
-              $document.scrollTop(100)
-            });
-          </script>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="login.php">Login as user</a></li>
-              <li><a href="adminLogin">Login as admin</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
+              <li><a href="#">View Animal Shelters</a></li>
+              <li><a href="#">View Drop in Centers</a></li>
+              <li><a href='allUsers.php'>View All Users</a></li>
             </ul>
           </li>
+          <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="store.php">Add Product</a></li>
+              <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="addUser.php">Add User</a></li>
+              <li><a href="Veterinarians.php">Add Veterinarian</a></li>
+              <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
+              <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
+            
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="myprofile">My Profile</a></li>
+              <li><a href="logout.php">Log Out</a></li>
+            </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -70,54 +96,60 @@
     </div>
   
   </header><!-- End Header -->
-  <div class="main"> 
-    <!-- Sign in  Form -->
-    <section class="sign-in">
-        <div class="container">
-            <div class="signin-content">
-                <div class="signin-image">
-                    <figure><img src="PetVille/assets/img/admin.png" alt="sing up image" styles="background: #ced4da" style="max-width:400px"></figure>
-                </div>
-
-                <div class="signin-form">
-                    <h2 class="form-title">Admin Login</h2>
-                    <form method="POST" class="register-form" id="login-form">
-                        <div class="form-group">
-                            <label for="your_name"><i class="fa fa-user"></i></label>
-                            <input type="email" name="admin_email" id="admin_email" placeholder="Email" required/>
-                        </div>
-                        <div class="form-group">
-                            <label for="your_pass"><i class="fa fa-lock"></i></label>
-                            <input type="password" name="admin_password" id="admin_password" placeholder="Password" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                        </div>
-                        <div class="form-group form-button">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Log in"/>
-                        </div>
-                    </form>
-                      <div class="social-login">
-                          <span class="social-label">Or login with</span>
-                          <ul class="socials">
-                              <li><a href="#"><i class="fa fa-facebook" style="background:#3c5a99"></i></a></li>
-                              <li><a href="#"><i class="fa fa-google" style="background:red"></i></a></li>
-                          </ul>
-                      </div>
-                   </div>
-                </div>
+  <div class="main">
+    <div class="col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title"></p>
+                    <table class="table table-hover" id="dataTables-example" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Photo</th>
+                                <th>Grooming Center</th>
+                                <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>Location</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <style>
+                            .img{
+                              border-radius: 50%;
+                            }
+                          </style>
+						<?php
+							if(!empty($result)) { 
+								foreach($result as $row) {
+							?>
+							<tr class="table-row">
+								<td><?php echo $row["id"]; ?></td>
+                <td><img src="<?php echo (!empty($row["vet_img"]))? ' ' .$row["vet_img"]: 'PetVille\assets\img\vet-image.jpg';?>"class = "img-circle" height="50" width="50"></td>
+								<td><?php echo $row["grooming_center"]; ?></td>
+                <td><?php echo $row["grooming_center_email"]; ?></td>
+								<td><?php echo $row["grooming_center_contact_number"]; ?></td>
+                <td><?php echo $row["grooming_center_location"]; ?></td>
+								<td><a class="ajax-action-links" href='updateGroomingCenter.php?id=<?php echo $row['id']; ?>'><button class="btn btn-primary mr-3" name = "edit" id= "edit">Update</button></td>
+								<td><a class="ajax-action-links" href='deleteGroomingCenter.php?id=<?php echo $row['id']; ?>'><button class="btn btn-danger" style="color:rgba(255, 255, 255, 255)">Delete</button></td>
+							</tr>
+							<?php
+								}
+							}
+							?>
+                        </tbody>
+                    </table>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+  </div>
+  
+  <!-- Put the dashboard content here -->
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
     <div class="footer-top">
-
       <div class="container">
-
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <a href="#header" class="scrollto footer-logo"><img src="PetVille/assets/img/bluepaw.png" alt=""></a>
@@ -125,8 +157,6 @@
             <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
           </div>
         </div>
-
-        
         <div class="social-links">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -134,13 +164,12 @@
           <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
-
       </div>
     </div>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Ampon</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Pet Society</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -167,7 +196,8 @@
 
   <!-- Template Main JS File -->
   <script src="PetVille/assets/js/main.js"></script>
-
+  
 </body>
 
 </html>
+

@@ -1,4 +1,4 @@
-<?php require_once('addAnimal_shelter.php') ?>
+<?php require_once('addGrooming_center.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,11 +53,12 @@
         <ul>
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">View Products</a></li>
-              <li><a href="#">View Grooming Center</a></li>
-              <li><a href="#">View Veterinarian</a></li>
-              <li><a href="#">View Animal Shelters</a></li>
-              <li><a href="#">View Drop in Centers</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
+              <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
+              <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
+              <li><a href='allUsers.php'>View All Users</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
@@ -67,6 +68,7 @@
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
+            
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
@@ -116,7 +118,7 @@
             <div class="pl-sm-4 pl-2" id="img-section"> <b>image of the Animal Grooming Center</b>
                 <p>Accepted file type .png .jpg .jpeg Less than 1MB</p> 
                 <button class="btn button border"><b>Choose File</b></button>
-                <input type="file" name="animal_grooming_center_img" multiple>
+                <input type="file" name="grooming_center_img" multiple>
             </div>
         </div>
         <div class="py-2">

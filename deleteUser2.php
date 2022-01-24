@@ -1,4 +1,4 @@
-<?php include('loginadmin.php') ?>
+<?php require_once('deleteUser.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +30,12 @@
 
   <!-- Template Main CSS File -->
   <link href="PetVille/assets/css/style.css" rel="stylesheet">
-  <link href="PetVille/assets/css/login.css" rel="stylesheet">
+  <link href="PetVille/assets/css/myprofile.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-
   <!-- ======= Hero Section ======= -->
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -51,18 +50,31 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <script>
-            $('#about').click(function(){
-              $document.scrollTop(100)
-            });
-          </script>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="login.php">Login as user</a></li>
-              <li><a href="adminLogin">Login as admin</a></li>
+              <li><a href="#">View Products</a></li>
+              <li><a href="#">View Grooming Center</a></li>
+              <li><a href="#">View Veterinarian</a></li>
+              <li><a href="#">View Animal Shelters</a></li>
+              <li><a href="#">View Drop in Centers</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
+              
             </ul>
           </li>
+          <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="store.php">Add Product</a></li>
+              <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="Veterinarians.php">Add Veterinarian</a></li>
+              <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
+              <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="myprofile">My Profile</a></li>
+              <li><a href="logout.php">Log Out</a></li>
+            </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,53 +83,54 @@
   
   </header><!-- End Header -->
   <div class="main"> 
-    <!-- Sign in  Form -->
-    <section class="sign-in">
-        <div class="container">
-            <div class="signin-content">
-                <div class="signin-image">
-                    <figure><img src="PetVille/assets/img/admin.png" alt="sing up image" styles="background: #ced4da" style="max-width:400px"></figure>
-                </div>
-
-                <div class="signin-form">
-                    <h2 class="form-title">Admin Login</h2>
-                    <form method="POST" class="register-form" id="login-form">
-                        <div class="form-group">
-                            <label for="your_name"><i class="fa fa-user"></i></label>
-                            <input type="email" name="admin_email" id="admin_email" placeholder="Email" required/>
-                        </div>
-                        <div class="form-group">
-                            <label for="your_pass"><i class="fa fa-lock"></i></label>
-                            <input type="password" name="admin_password" id="admin_password" placeholder="Password" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                        </div>
-                        <div class="form-group form-button">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Log in"/>
-                        </div>
-                    </form>
-                      <div class="social-login">
-                          <span class="social-label">Or login with</span>
-                          <ul class="socials">
-                              <li><a href="#"><i class="fa fa-facebook" style="background:#3c5a99"></i></a></li>
-                              <li><a href="#"><i class="fa fa-google" style="background:red"></i></a></li>
-                          </ul>
-                      </div>
-                   </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+    <!-- Put the dashboard content here -->
+    <form method="POST" class="update-user-form" id="update-user-form">
+    <div class="wrapper bg-white mt-sm-5">
+      <h4 class="pb-4 border-bottom">Are you sure to delete this user?</h4>
+        <style>
+          #img-section {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor:pointer;
+          }
+          #img-section input[type=file] {
+            left: 0;
+            top: 0;
+            opacity: 0;
+            position: absolute;
+            font-size: 90px;
+            cursor:pointer;
+          }
+          .btn-upload {
+            background-color: #fff;
+            border: 3px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor:pointer;
+          }
+        </style>
+        
+        <div class="py-2">
+          
+          <div class="py-3 pb-4 border-bottom"> 
+              <button class="btn btn-primary mr-3" name = "delete_user" id= "delete_user">Delete</button>
+              <button class="btn border button"><a href= "allUsers.php">Cancel</a></button> 
+          </div>
+          
+            </form>
+        
+      </div>
+  </div>
+    </form>
+   </div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
     <div class="footer-top">
-
       <div class="container">
-
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <a href="#header" class="scrollto footer-logo"><img src="PetVille/assets/img/bluepaw.png" alt=""></a>
@@ -125,8 +138,6 @@
             <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
           </div>
         </div>
-
-        
         <div class="social-links">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -134,13 +145,12 @@
           <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
-
       </div>
     </div>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Ampon</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Pet Society</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
