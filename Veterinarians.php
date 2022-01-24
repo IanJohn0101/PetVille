@@ -53,13 +53,13 @@
         <ul>
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="viewProducts.php">View Products</a></li>
-              <li><a href="#">View Grooming Center</a></li>
+            <li><a href="viewProducts.php">View Products</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
               <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
-              <li><a href="#">View Animal Shelters</a></li>
-              <li><a href="#">View Drop in Centers</a></li>
-              <li><a href='allUsers.php'>View All Users</a></li>
-            </ul>
+              <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
+              <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
+              </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

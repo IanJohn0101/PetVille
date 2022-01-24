@@ -58,17 +58,17 @@
           <li><a class="nav-link scrollto" href="Animal_boarding.php">Add Animal Shelter </a></li> -->
           <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">View Products</a></li>
-              <li><a href="#">View Grooming Center</a></li>
-              <li><a href="#">View Veterinarian</a></li>
-              <li><a href="#">View Animal Shelters</a></li>
-              <li><a href="#">View Drop in Centers</a></li>
+              <li><a href="viewProducts.php">View Products</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
+              <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
+              <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
               <li><a href="allUsers.php">View All Users</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="Products.php">Add Product</a></li>
+              <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
