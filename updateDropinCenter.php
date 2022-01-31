@@ -1,3 +1,5 @@
+<?php require_once('updateDropinCenter2.php')?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +30,12 @@
 
   <!-- Template Main CSS File -->
   <link href="PetVille/assets/css/style.css" rel="stylesheet">
-  <link href="PetVille/assets/css/login.css" rel="stylesheet">
+  <link href="PetVille/assets/css/myprofile.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-
   <!-- ======= Hero Section ======= -->
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -49,22 +50,15 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <!-- <li><a class="nav-link scrollto" href="grooming_center.php">Add Grooming Center</a></li>
-          <li><a class="nav-link scrollto" href="Veterinarians.php">Add Veterinarian</a></li>
-          <li><a class="nav-link scrollto" href="Drop_in_center">Add Drop in Center</a></li>
-
-          <li><a class="nav-link scrollto " href="Products.php">Add Products</a></li>
-          
-          <li><a class="nav-link scrollto" href="Animal_boarding.php">Add Animal Shelter </a></li> -->
-          
-          <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="viewProducts.php">View Products</a></li>
               <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
               <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
               <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
               <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
-              <li><a href='allUsers.php'>View All Users</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
+              
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
@@ -72,14 +66,13 @@
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
-              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="myprofile.php">My Profile</a></li>
+              <li><a href="myprofile">My Profile</a></li>
               <li><a href="logout.php">Log Out</a></li>
             </ul>
         </ul>
@@ -89,6 +82,79 @@
     </div>
   
   </header><!-- End Header -->
+  <div class="main"> 
+    <!-- Put the dashboard content here -->
+    <form method="POST" class="update-user-form" id="update-user-form">
+    <div class="wrapper bg-white mt-sm-5">
+      <h4 class="pb-4 border-bottom">Update Drop in Center</h4>
+        <style>
+          #img-section {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor:pointer;
+          }
+          #img-section input[type=file] {
+            left: 0;
+            top: 0;
+            opacity: 0;
+            position: absolute;
+            font-size: 90px;
+            cursor:pointer;
+          }
+          .btn-upload {
+            background-color: #fff;
+            border: 3px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor:pointer;
+          }
+        </style>
+        <script>
+            function visiblePass() 
+            {
+                var x = document.getElementById("user_password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
+        <div class="py-2">
+          <div class="row py-2">
+              <div class="col-md-6"> 
+                  <label for="organization_name">Organization Name</label> <input type="text" name = "organization_name" value="<?= $result->organization_name;?>" class="bg-light form-control" placeholder="Organization Name"> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                  <label for="org_details">Details</label> <input type="text" name = "org_details" value="<?= $result->org_details;?>" class="bg-light form-control" placeholder="Details"> 
+              </div>
+          </div>
+          <div class="row py-2">
+              <div class="col-md-6"> 
+                  <label for="org_location">Location</label> <input type="text" name = "org_location" value="<?= $result->org_location;?>" class="bg-light form-control" placeholder="Location"> 
+              </div>
+          </div>
+          <div class="row py-2">
+              <div class="col-md-6"> 
+                  <label for="animal_boarding_location">Update the image of the Drop in Center</label> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                <input type="file" name = "drop_in_center_img">
+              </div>
+          </div>
+          
+          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "update" id= "update">Save</button><button class="btn border button"><a href= "allUsers.php">Cancel</a></button> </div>
+          
+        </form>
+            
+      </div>
+  </div>
+    </form>
+   </div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">

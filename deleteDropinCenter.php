@@ -1,3 +1,5 @@
+<?php require_once('deleteDropinCenter2.php')?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +30,12 @@
 
   <!-- Template Main CSS File -->
   <link href="PetVille/assets/css/style.css" rel="stylesheet">
-  <link href="PetVille/assets/css/login.css" rel="stylesheet">
+  <link href="PetVille/assets/css/myprofile.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-
   <!-- ======= Hero Section ======= -->
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -49,22 +50,15 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <!-- <li><a class="nav-link scrollto" href="grooming_center.php">Add Grooming Center</a></li>
-          <li><a class="nav-link scrollto" href="Veterinarians.php">Add Veterinarian</a></li>
-          <li><a class="nav-link scrollto" href="Drop_in_center">Add Drop in Center</a></li>
-
-          <li><a class="nav-link scrollto " href="Products.php">Add Products</a></li>
-          
-          <li><a class="nav-link scrollto" href="Animal_boarding.php">Add Animal Shelter </a></li> -->
-          
-          <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="viewProducts.php">View Products</a></li>
               <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
               <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
               <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
               <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
-              <li><a href='allUsers.php'>View All Users</a></li>
+              <li><a href="allUsers.php">View All Users</a></li>
+              
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
@@ -72,14 +66,13 @@
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
-              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="myprofile.php">My Profile</a></li>
+              <li><a href="myprofile">My Profile</a></li>
               <li><a href="logout.php">Log Out</a></li>
             </ul>
         </ul>
@@ -89,6 +82,51 @@
     </div>
   
   </header><!-- End Header -->
+  <div class="main"> 
+    <!-- Put the dashboard content here -->
+    <form method="POST" class="update-user-form" id="update-user-form">
+    <div class="wrapper bg-white mt-sm-5">
+      <h4 class="pb-4 border-bottom">Are you sure to delete this Drop in Center?</h4>
+        <style>
+          #img-section {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor:pointer;
+          }
+          #img-section input[type=file] {
+            left: 0;
+            top: 0;
+            opacity: 0;
+            position: absolute;
+            font-size: 90px;
+            cursor:pointer;
+          }
+          .btn-upload {
+            background-color: #fff;
+            border: 3px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor:pointer;
+          }
+        </style>
+        
+        <div class="py-2">
+          
+          <div class="py-3 pb-4 border-bottom"> 
+              <button class="btn btn-primary mr-3" name = "delete_drop_in_center" id= "delete_drop_in_center">Delete</button>
+              <button class="btn border button"><a href= "viewDropinCenter.php">Cancel</a></button> 
+          </div>
+          
+            </form>
+        
+      </div>
+  </div>
+    </form>
+   </div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">

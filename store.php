@@ -1,5 +1,3 @@
-<?php require_once('addProducts.php') ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,10 +52,10 @@
         <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="viewProducts.php">View Products</a></li>
-              <li><a href="#">View Grooming Center</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
               <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
-              <li><a href="#">View Animal Shelters</a></li>
-              <li><a href="#">View Drop in Centers</a></li>
+              <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
+              <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
               <li><a href='allUsers.php'>View All Users</a></li>
             </ul>
           </li>
@@ -66,13 +64,14 @@
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
+              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="myprofile">My Profile</a></li>
+              <li><a href="myprofile.php">My Profile</a></li>
               <li><a href="logout.php">Log Out</a></li>
             </ul>
         </ul>
@@ -80,15 +79,7 @@
       </nav><!-- .navbar -->
       
     </div>
-  
-  </header><!-- End Header -->
-  <div class="main"> 
-    <!-- Put the dashboard content here -->
-    <form method="POST" class="add-drop-in-center-form" id="add-drop-in-center-form">
-      <div class="wrapper bg-white mt-sm-5">
-      <h4 class="pb-4 border-bottom">Pet Product</h4>
-        <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
-        <style>
+    <style>
           #img-section {
             display: inline-block;
             position: relative;
@@ -114,32 +105,59 @@
             cursor:pointer;
           }
         </style>
-            <div class="pl-sm-4 pl-2" id="img-section"> <b>image of the Product</b>
-                <p>Accepted file type .png .jpg .jpeg Less than 1MB</p> 
-                <button class="btn button border"><b>Choose File</b></button>
-                <input type="file" name="product_img" multiple>
-            </div>
+  </header><!-- End Header -->
+  <div class="main"> 
+    <!-- Put the dashboard content here -->
+    <form method="POST" action = "addProducts.php" class="add-drop-in-center-form" id="add-drop-in-center-form" enctype="multipart/form-data">
+      <div class="wrapper bg-white mt-sm-5">
+       <h4 class="pb-4 border-bottom">Pet Product</h4>
+        <div class="d-flex align-items-start py-3 border-bottom"> <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img" alt="">
+          <div class="pl-sm-4 pl-2" id="img-section" name = "product_img"> <b>image of the Product</b>
+            <p>Accepted file type .png .jpg .jpeg Less than 1MB</p> 
+            <button class="btn button border" name="product_img"><b>Choose File</b></button>
+            <input type="file" name="product_img" required>
+          </div>
         </div>
         <div class="py-2">
           <div class="row py-2">
-              <div class="col-md-6"> <label for="product_name">Product Name</label> <input type="text" name = "product_name" class="bg-light form-control" placeholder="Product Name"> </div>
-              <div class="col-md-6 pt-md-0 pt-3"> <label for="product_brand">Product Brand</label> <input type="text" name = "product_brand" class="bg-light form-control" placeholder="Brand"> </div>
+              <div class="col-md-6"> 
+                <label for="product_name">Product Name</label> 
+                <input type="text" name = "product_name" class="bg-light form-control" placeholder="Product Name" required> 
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3"> 
+                <label for="product_brand">Product Brand</label> 
+                <input type="text" name = "product_brand" class="bg-light form-control" placeholder="Brand" required> 
+              </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="product_category">Product Category</label> <input type="text" name = "product_category" class="bg-light form-control" placeholder="Category"> </div>
-              <div class="col-md-6"> <label for="product_price">Product Price</label> <input type="text" name = "product_price" class="bg-light form-control" placeholder="Price"> </div>
+              <div class="col-md-6"> 
+                <label for="product_category">Product Category</label> 
+                <select id = "product_category" name = "product_category" class="bg-light form-control" placeholder="Category" required>
+                  <option value = "">Choose Category  ˅</option>
+                  <option value = "dog food">Dog Food</option>
+                  <option value = "cat food">Cat Food</option>
+                  <option value = "other food">Other Food</option>
+                </select>
+              </div>
+              <div class="col-md-6"> 
+                <label for="product_price">Product Price</label> 
+                <input type="text" name = "product_price" class="bg-light form-control" placeholder="Price" required> 
+              </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="product_quantity">Product Quantity</label> <input type="text" name = "product_quantity" class="bg-light form-control" placeholder="Details"> </div>
-              
+              <div class="col-md-6"> 
+                <label for="product_quantity">Product Quantity</label> 
+                <input type="text" name = "product_quantity" class="bg-light form-control" placeholder="Quantity" required> 
+              </div>
           </div>
-          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "submit" id= "submit">Submit</button> <button class="btn border button">Cancel</button> </div>
-          
-            </form>
+          <div class="py-3 pb-4 border-bottom"> 
+            <button class="btn btn-primary mr-3" name = "submit" id= "submit">Submit</button> 
+            <button class="btn border button">Cancel</button> 
+          </div>
+        </div>
       </div>
-  </div>
     </form>
-   </div>
+  </div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -163,7 +181,7 @@
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Pet Society</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><spanc>Pet Society</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

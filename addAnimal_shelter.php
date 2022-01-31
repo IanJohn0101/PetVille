@@ -11,10 +11,9 @@ if(isset($_POST['submit'])){
     $animal_boarding_contact_number = $_POST['animal_boarding_contact_number'];
     $animal_boarding_email = $_POST['animal_boarding_email'];
     $animal_boarding_location = $_POST['animal_boarding_location'];
-    $animal_boarding_img = $_POST['animal_boarding_name'];
     
     //$user_password = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12)); // para verify ra if pila ka characters ang dawaton
-    $sql = "SELECT COUNT(animal_boarding_name) AS num FROM animal_shelter_tbl WHERE animal_boading_name = :animal_boarding_name";  // check if ni exist naba ang email nga gi provide
+    $sql = "SELECT COUNT(animal_boarding_name) AS num FROM animal_shelter_tbl WHERE animal_boarding_name= :animal_boarding_name";  // check if ni exist naba ang email nga gi provide
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':animal_boarding_name', $animal_boarding_name);
     $stmt->execute();
@@ -23,7 +22,7 @@ if(isset($_POST['submit'])){
 
     if($row['num'] > 0)
     {        
-      echo '<script>alert("Name of the Animal Shelter already exists");</script>';
+      echo '<script>alert("Animal Boarding already exists");</script>';
     }
     else
     {
@@ -32,21 +31,19 @@ if(isset($_POST['submit'])){
         animal_boarding_name,
         animal_boarding_contact_number,
         animal_boarding_email,
-        animal_boarding_location,
-        animal_boarding,img
+        animal_boarding_location
       ) 
       VALUES(
         :animal_boarding_name,
         :animal_boarding_contact_number,
         :animal_boarding_email,
-        :animal_boarding_location,
-        :animal_boarding,img
+        :animal_boarding_location
       )");
+      
       $stmt->bindParam(':animal_boarding_name', $animal_boarding_name);
       $stmt->bindParam(':animal_boarding_contact_number', $animal_boarding_contact_number);
-      $stmt->bindParam(':animal_boarding_email', $animal_boarding_email);
+      $stmt->bindParam(':animal_boarding_email', $animal_boarding_email); 
       $stmt->bindParam(':animal_boarding_location', $animal_boarding_location);
-      $stmt->bindParam(':animal_boarding_img', $animal_boarding_img);
       
       if($stmt->execute())
       {

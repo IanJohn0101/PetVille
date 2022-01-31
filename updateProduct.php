@@ -1,4 +1,5 @@
 <?php require_once('updateProduct2.php')?>
+<?php include('uploadimage.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -149,18 +150,18 @@
                   <label for="animal_boarding_location">Update the image of the product</label> 
               </div>
               <div class="col-md-6 pt-md-0 pt-3"> 
-                <input type="file" name = "product_image">
+                <input type="file" name = "product_img">
               </div>
           </div>
-          
-          <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3" name = "update" id= "update">Save</button><button class="btn border button"><a href= "allUsers.php">Cancel</a></button> </div>
-          
-        </form>
-            
+          <div class="py-3 pb-4 border-bottom"> 
+            <button class="btn btn-primary mr-3" name = "update" id= "update">Save</button>
+            <button class="btn border button"><a href= "allUsers.php">Cancel</a></button> 
+          </div>
+        </form>    
       </div>
-  </div>
-    </form>
-   </div>
+    </div>
+  </form>
+</div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">

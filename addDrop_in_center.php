@@ -8,8 +8,8 @@ if(isset($_POST['submit'])){
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $organization_name = $_POST['organization_name'];
-    $details = $_POST['details'];
-    $location = $_POST['location'];
+    $org_details = $_POST['org_details'];
+    $org_location = $_POST['org_location'];
     
     //$user_password = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12)); // para verify ra if pila ka characters ang dawaton
     $sql = "SELECT COUNT(organization_name) AS num FROM drop_in_center WHERE organization_name= :organization_name";  // check if ni exist naba ang email nga gi provide
@@ -21,24 +21,24 @@ if(isset($_POST['submit'])){
 
     if($row['num'] > 0)
     {        
-      echo '<script>alert("Name of the Organization already exists");</script>';
+      echo '<script>alert("Drop in Center already exists");</script>';
     }
     else
     {
       $stmt = $dbh->prepare("INSERT INTO drop_in_center
       (
         organization_name,
-        org_location,
-        org_details
+        org_details,
+        org_location
       ) 
       VALUES(
         :organization_name,
-        :org_location,
         :org_details,
+        :org_location
       )");
       $stmt->bindParam(':organization_name', $organization_name);
-      $stmt->bindParam(':org_location', $org_location);
       $stmt->bindParam(':org_details', $org_details);
+      $stmt->bindParam(':org_location', $org_location); 
       
       if($stmt->execute())
       {

@@ -51,14 +51,31 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Lorem</a></li>
-          <li><a class="nav-link scrollto" href="#services">Ipsum</a></li>
-
-          <li><a class="nav-link scrollto " href="#Announcement">Dolor</a></li>
-          
-          <li><a class="nav-link scrollto" href="#contact">Donate</a></li>
-          <li><a class="nav-link scrollto active" href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
+        <li class="dropdown"><a href="#"><span>View</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="viewProducts.php">View Products</a></li>
+              <li><a href="viewGroomingCenter.php">View Grooming Center</a></li>
+              <li><a href="viewVeterinarian.php">View Veterinarian</a></li>
+              <li><a href="viewAnimalShelter.php">View Animal Shelters</a></li>
+              <li><a href="viewDropinCenter.php">View Drop in Centers</a></li>
+              <li><a href='allUsers.php'>View All Users</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Add</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="store.php">Add Product</a></li>
+              <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="Veterinarians.php">Add Veterinarian</a></li>
+              <li><a href="addUser.php">Add User</a></li>
+              <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
+              <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>ADMIN</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="myprofile.php">My Profile</a></li>
+              <li><a href="logout.php">Log Out</a></li>
+            </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

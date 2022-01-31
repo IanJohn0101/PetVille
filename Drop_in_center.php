@@ -65,6 +65,7 @@
             <ul>
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>
@@ -123,10 +124,10 @@
         <div class="py-2">
           <div class="row py-2">
               <div class="col-md-6"> <label for="organization_name">Organization Name</label> <input type="text" name = "organization_name" class="bg-light form-control" placeholder="Organization Name"> </div>
-              <div class="col-md-6 pt-md-0 pt-3"> <label for="location">Location</label> <input type="text" name = "location" class="bg-light form-control" placeholder="Location"> </div>
+              <div class="col-md-6 pt-md-0 pt-3"> <label for="org_location">Location</label> <input type="text" name = "org_location" class="bg-light form-control" placeholder="Location"> </div>
           </div>
           <div class="row py-2">
-              <div class="col-md-6"> <label for="details">Details</label> <input type="text" name = "details" class="bg-light form-control" placeholder="Details"> </div>
+              <div class="col-md-6"> <label for="org_details">Details</label> <input type="text" name = "org_details" class="bg-light form-control" placeholder="Details"> </div>
     
           </div>
          

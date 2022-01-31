@@ -65,6 +65,7 @@
             <ul>
               <li><a href="store.php">Add Product</a></li>
               <li><a href="grooming_center.php">Add Grooming Center</a></li>
+              <li><a href="addUser.php">Add User</a></li>
               <li><a href="Veterinarians.php">Add Veterinarian</a></li>
               <li><a href="Animal_boarding.php">Add Animal Shelters</a></li>
               <li><a href="Drop_in_center.php">Add Drop in Centers</a></li>

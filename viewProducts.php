@@ -128,8 +128,9 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 							?>
 							<tr class="table-row">
 								<td><?php echo $row["id"]; ?></td>
-                <td><img src="<?php echo (!empty($row["product_img"]))? ' ' .$row["product_img"]: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td>
-								<td><?php echo $row["product_name"]; ?></td>
+                <!-- <td><img src="PetVille/uploads/<?php echo (!empty($row['product_img']))? ' ' .$row['product_img']: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td> -->
+								<td><img src="PetVille/uploads/<?php echo $row['product_img']?>"class = "img-circle" height="50" width="50"></td>
+                <td><?php echo $row["product_name"]; ?></td>
                 <td><?php echo $row["product_brand"]; ?></td>
 								<td><?php echo $row["product_category"]; ?></td>
                 <td><?php echo $row["product_price"]; ?></td>

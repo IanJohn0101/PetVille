@@ -108,8 +108,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                 <th>ID</th>
                                 <th>Photo</th>
                                 <th>Organization Name</th>
-                                <th>Organization Location</th>
-                                <th>Organizaton Details</th>
+                                <th>Location</th>
+                                <th>Details</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -126,12 +126,12 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 							?>
 							<tr class="table-row">
 								<td><?php echo $row["id"]; ?></td>
-                                <td><img src="<?php echo (!empty($row["product_img"]))? ' ' .$row["product_img"]: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td>
+                <td><img src="<?php echo (!empty($row["product_img"]))? ' ' .$row["product_img"]: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td>
 								<td><?php echo $row["organization_name"]; ?></td>
-                                <td><?php echo $row["org_location"]; ?></td>
+                <td><?php echo $row["org_location"]; ?></td>
 								<td><?php echo $row["org_details"]; ?></td>
-                                <td><a class="ajax-action-links" href='updateOrg.php?id=<?php echo $row['id']; ?>'><button class="btn btn-primary mr-3" name = "edit" id= "edit">Update</button></td>
-								<td><a class="ajax-action-links" href='deleteOrg.php?id=<?php echo $row['id']; ?>'><button class="btn btn-danger" style="color:rgba(255, 255, 255, 255)">Delete</button></td>
+                <td><a class="ajax-action-links" href='updateDropinCenter.php?id=<?php echo $row['id']; ?>'><button class="btn btn-primary mr-3" name = "edit" id= "edit">Update</button></td>
+								<td><a class="ajax-action-links" href='deleteDropinCenter.php?id=<?php echo $row['id']; ?>'><button class="btn btn-danger" style="color:rgba(255, 255, 255, 255)">Delete</button></td>
 							</tr>
 							<?php
 								}

@@ -127,11 +127,11 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 							?>
 							<tr class="table-row">
 								<td><?php echo $row["id"]; ?></td>
-                                <td><img src="<?php echo (!empty($row["product_img"]))? ' ' .$row["product_img"]: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td>
+                <td><img src="<?php echo (!empty($row["product_img"]))? ' ' .$row["product_img"]: 'PetVille/assets/img/petfood.jpg'; ?>"class = "img-circle" height="50" width="50"></td>
 								<td><?php echo $row["animal_boarding_name"]; ?></td>
-                                <td><?php echo $row["animal_boarding_location"]; ?></td>
+                <td><?php echo $row["animal_boarding_location"]; ?></td>
 								<td><?php echo $row["animal_boarding_contact_number"]; ?></td>
-                                <td><?php echo $row["animal_boarding_email"]; ?></td>
+                <td><?php echo $row["animal_boarding_email"]; ?></td>
 								<td><a class="ajax-action-links" href='updateAnimalShelter.php?id=<?php echo $row['id']; ?>'><button class="btn btn-primary mr-3" name = "edit" id= "edit">Update</button></td>
 								<td><a class="ajax-action-links" href='deleteAnimalShelter.php?id=<?php echo $row['id']; ?>'><button class="btn btn-danger" style="color:rgba(255, 255, 255, 255)">Delete</button></td>
 							</tr>
